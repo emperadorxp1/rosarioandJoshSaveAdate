@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+
+# Vercel y variables de entorno
+.vercel/
+.env
+.env.*
+
+# Herramientas de diseño locales (incluyen fotos de referencia): no van al repo
+.claude/
+.impeccable/

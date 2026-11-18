@@ -1,0 +1,51 @@
+---
+/** Iconos de línea dorada, un mismo trazo (1.6) para toda la web. */
+interface Props {
+  name: 'church' | 'cheers' | 'calendar' | 'hanger' | 'people' | 'gift' | 'pin' | 'copy' | 'check' | 'chat' | 'heart' | 'note' | 'glasses-off' | 'minus' | 'plus';
+  class?: string;
+}
+const { name, class: cls = '' } = Astro.props;
+---
+
+<svg class={`icon ${cls}`} viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  {name === 'church' && (<>
+    <path d="M16 3v6M13.5 5.5h5" /><path d="M8 29V16l8-7 8 7v13" /><path d="M4 29h24" /><path d="M13.5 29v-6a2.5 2.5 0 0 1 5 0v6" /><path d="M14 15.5h4" />
+  </>)}
+  {name === 'cheers' && (<>
+    <path d="M7 4h7l-.6 7.2a3 3 0 0 1-2.9 2.8h0a3 3 0 0 1-2.9-2.8Z" transform="rotate(-12 10 9)" />
+    <path d="M18 4h7l-.6 7.2a3 3 0 0 1-2.9 2.8h0a3 3 0 0 1-2.9-2.8Z" transform="rotate(12 22 9)" />
+    <path d="M11 14.5 9.6 25M8 25.5h5" /><path d="M21 14.5 22.4 25M19 25.5h5" /><path d="M16 2v2.5M13 3l1 1.6M19 3l-1 1.6" />
+  </>)}
+  {name === 'calendar' && (<>
+    <rect x="5" y="7" width="22" height="20" rx="3" /><path d="M5 13h22M11 4v5M21 4v5" /><path d="M16 23s-4-2.4-4-5a2 2 0 0 1 4-.6 2 2 0 0 1 4 .6c0 2.6-4 5-4 5Z" />
+  </>)}
+  {name === 'hanger' && (<>
+    <path d="M13 9a3 3 0 1 1 4 2.8c-.6.2-1 .8-1 1.4V14" /><path d="M16 14 3.8 22.4A1.5 1.5 0 0 0 4.7 25h22.6a1.5 1.5 0 0 0 .9-2.6Z" />
+  </>)}
+  {name === 'people' && (<>
+    <circle cx="16" cy="9" r="3.5" /><circle cx="7.5" cy="12" r="2.8" /><circle cx="24.5" cy="12" r="2.8" />
+    <path d="M10 26v-3a6 6 0 0 1 12 0v3" /><path d="M3 25v-2a4.5 4.5 0 0 1 6-4.2M29 25v-2a4.5 4.5 0 0 0-6-4.2" />
+  </>)}
+  {name === 'gift' && (<>
+    <rect x="5" y="12" width="22" height="6" rx="1" /><path d="M7 18v9h18v-9M16 12v15" /><path d="M16 12c-2-4-7-5-7-1.5S14 12 16 12Zm0 0c2-4 7-5 7-1.5S18 12 16 12Z" />
+  </>)}
+  {name === 'pin' && (<>
+    <path d="M16 29s-9-8.4-9-15a9 9 0 0 1 18 0c0 6.6-9 15-9 15Z" /><circle cx="16" cy="14" r="3.2" />
+  </>)}
+  {name === 'copy' && (<>
+    <rect x="10" y="10" width="16" height="17" rx="2.5" /><path d="M6 21V7.5A2.5 2.5 0 0 1 8.5 5H20" />
+  </>)}
+  {name === 'check' && <path d="m7 17 6 6 12-14" />}
+  {name === 'minus' && <path d="M8 16h16" />}
+  {name === 'plus' && <path d="M8 16h16M16 8v16" />}
+  {name === 'chat' && (<>
+    <path d="M5 26.5 6.6 21A11 11 0 1 1 11 25.3Z" /><path d="M12 12.5c0 4 3.5 7.5 7.5 7.5l1.8-1.8-2.6-1.6-1.3 1a5 5 0 0 1-3-3l1-1.3-1.6-2.6Z" />
+  </>)}
+  {name === 'heart' && <path d="M16 26S5 19.4 5 12.2A5.2 5.2 0 0 1 16 9.6a5.2 5.2 0 0 1 11 2.6C27 19.4 16 26 16 26Z" />}
+  {name === 'note' && (<>
+    <path d="M12 24V7l14-3v17" /><circle cx="8.5" cy="24" r="3.5" /><circle cx="22.5" cy="21" r="3.5" />
+  </>)}
+  {name === 'glasses-off' && (<>
+    <path d="M9 4h7l-.6 7.2a3 3 0 0 1-2.9 2.8h0a3 3 0 0 1-2.9-2.8Z" /><path d="M12.5 14v11M9.5 25.5h6" /><circle cx="22" cy="18" r="6" /><path d="m18 22 8-8" />
+  </>)}
+</svg>

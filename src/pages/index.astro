@@ -1,0 +1,345 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import Icon from '../components/Icon.astro';
+import { couple, parents, date, venues, itinerary, details, gift, rsvp } from '../data/wedding';
+
+const title = `${couple.bride} & ${couple.groom} · 27 de febrero de 2027`;
+const description = 'Nos casamos en Tacna. Abre tu invitación, revisa el itinerario y confirma tu asistencia.';
+
+const config = {
+  date: date.iso,
+  end: date.endIso,
+  itinerary: itinerary.map((i) => i.at),
+  rsvp,
+  couple,
+};
+---
+
+<Base title={title} description={description}>
+  <main>
+    <!-- 1 · El sobre -->
+    <section class="stage" id="inicio" aria-label="Invitación">
+      <div class="stage-flora" aria-hidden="true">
+        <Art name="monstera" class="fl fl-monstera sway" />
+        <Art name="leaf" class="fl fl-leaf sway" />
+        <Art name="hibiscus" class="fl fl-hib-a sway" />
+        <Art name="hibiscus" class="fl fl-hib-b sway" />
+        <Art name="paradise" class="fl fl-paradise sway" />
+        <Art name="plumeria" class="fl fl-plu-a sway" />
+        <Art name="plumeria" class="fl fl-plu-b sway" />
+        <Art name="monstera" class="fl fl-monstera-b sway" />
+      </div>
+
+      <div class="env" data-env>
+        <div class="env-back" aria-hidden="true"></div>
+
+        <article class="card card-hero" data-card aria-labelledby="names">
+          <div class="arch-rule" aria-hidden="true"><span></span><Art name="pokeball" class="arch-ball" /><span></span></div>
+          <div class="monogram-row">
+            <Art name="hibiscus" class="mono-hib" />
+            <p class="monogram" aria-hidden="true">R<span>&</span>J</p>
+            <Art name="paradise" class="mono-paradise sway" />
+          </div>
+          <p class="caps blessing">Con la bendición de Dios<br />y el amor de nuestras familias</p>
+          <h1 class="names" id="names" tabindex="-1">
+            <span>Rosario</span>
+            <span class="amp">&</span>
+            <span>Joshua</span>
+          </h1>
+          <div class="rule-heart" aria-hidden="true"><span></span><Icon name="heart" /><span></span></div>
+          <p class="bigdate"><span class="wd">{date.weekday}</span><time datetime={date.iso}>27<i>·</i>02<i>·</i>2027</time></p>
+
+          <div class="countdown" data-countdown role="timer" aria-live="off" aria-label="Cuenta regresiva para la boda">
+            <div><b data-cd="d">--</b><span>días</span></div>
+            <div><b data-cd="h">--</b><span>horas</span></div>
+            <div><b data-cd="m">--</b><span>min</span></div>
+            <div><b data-cd="s">--</b><span>seg</span></div>
+          </div>
+
+          <div class="cal">
+            <a class="btn btn-ghost" data-gcal target="_blank" rel="noopener"><Icon name="calendar" />Agregar a Google Calendar</a>
+            <button class="link-quiet" type="button" data-ics>Descargar para iPhone / Outlook</button>
+          </div>
+
+          <p class="for-guest" data-guest-box hidden>
+            Esta invitación es para<br />
+            <strong data-guest-name></strong>
+            <span class="seats" data-guest-seats></span>
+          </p>
+        </article>
+
+        <figure class="photo-pop">
+          <img src="/img/pareja.jpg" width="604" height="604" alt="Rosario y Joshua dándose un beso frente a un castillo colorido, en estilo acuarela." decoding="async" />
+          <Art name="hibiscus" class="pp-hib" />
+          <Art name="plumeria" class="pp-plu" />
+        </figure>
+
+        <div class="env-front" aria-hidden="true">
+          <div class="flap flap-l"><svg viewBox="0 0 200 440" preserveAspectRatio="none"><path filter="url(#paper)" d="M0 0 C70 6 150 84 200 196 C150 300 86 392 0 440 Z" /></svg></div>
+          <div class="flap flap-r"><svg viewBox="0 0 200 440" preserveAspectRatio="none"><path filter="url(#paper)" d="M200 0 C130 6 50 84 0 196 C50 300 114 392 200 440 Z" /></svg></div>
+          <svg class="cord" viewBox="0 0 400 24" preserveAspectRatio="none">
+            <g class="twine"><path d="M0 7 C100 5 300 9 400 7" /><path d="M0 12 C100 14 300 10 400 12" /><path d="M0 17 C100 15 300 19 400 17" /></g>
+          </svg>
+          <svg class="bow" viewBox="0 0 220 130">
+            <g class="twine">
+              <path d="M110 62 C88 30 40 18 30 40 C22 60 70 70 110 62" />
+              <path d="M110 62 C92 44 66 38 60 50 C56 62 86 66 110 62" />
+              <path d="M110 62 C132 30 180 18 190 40 C198 60 150 70 110 62" />
+              <path d="M110 62 C128 44 154 38 160 50 C164 62 134 66 110 62" />
+              <path d="M108 66 C96 86 80 104 64 122" />
+              <path d="M112 66 C126 88 140 104 158 120" />
+            </g>
+          </svg>
+          <div class="env-bloom">
+            <Art name="leaf" class="bl-leaf-a" />
+            <Art name="leaf" class="bl-leaf-b" />
+            <Art name="hibiscus" class="bl-hib" />
+          </div>
+        </div>
+
+        <button class="seal" type="button" data-open aria-label="Abrir la invitación">
+          <span class="seal-half seal-l"><svg viewBox="0 0 100 100"><use href="#wax" /></svg></span>
+          <span class="seal-half seal-r"><svg viewBox="0 0 100 100"><use href="#wax" /></svg></span>
+        </button>
+      </div>
+
+      <div class="stage-foot">
+        <p class="addressee" data-addressee>Para ti, con todo nuestro cariño</p>
+        <p class="addressee-seats caps" data-addressee-seats hidden></p>
+        <p class="hint" data-hint>Toca el lacre para abrir</p>
+      </div>
+    </section>
+
+    <!-- 2 · Nosotros + padres -->
+    <section class="sheet invite" id="nosotros">
+      <Art name="monstera" class="inv-monstera" />
+      <Art name="hibiscus" class="inv-hib sway" />
+      <Art name="plumeria" class="inv-plu sway" />
+      <div class="invite-text">
+        <h2 class="caps title">Tenemos el honor<br />de invitarte a celebrar<br />nuestra boda</h2>
+        <div class="rule-heart" aria-hidden="true"><span></span><Icon name="heart" /><span></span></div>
+        <h3 class="caps sub">Nuestros padres</h3>
+        <div class="parents">
+          <ul aria-label={`Padres de ${couple.bride}`}>{parents.bride.map((p) => <li>{p}</li>)}</ul>
+          <ul aria-label={`Padres de ${couple.groom}`}>{parents.groom.map((p) => <li>{p}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Lugares -->
+    <section class="places" id="lugares" aria-labelledby="t-lugares">
+      <h2 class="caps title" id="t-lugares">Dónde y cuándo</h2>
+      <div class="venues">
+        {venues.map((v) => (
+          <article class="venue">
+            <Icon name={v.icon as any} class="venue-icon" />
+            <h3 class="caps">{v.title}</h3>
+            <dl class="label-grid">
+              <div><dt>Fecha</dt><dd>{date.weekday} {date.day} de {date.month}</dd></div>
+              <div><dt>Hora</dt><dd>{v.time}</dd></div>
+              <div><dt>Lugar</dt><dd>{v.place}</dd></div>
+            </dl>
+            <a class="btn btn-solid" href={v.maps} target="_blank" rel="noopener"><Icon name="pin" />Cómo llegar</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 4 · Itinerario -->
+    <section class="plan" id="itinerario" aria-labelledby="t-plan">
+      <Art name="sparkle" class="star st-a" />
+      <Art name="sparkle" class="star st-b" />
+      <Art name="sparkle" class="star st-c" />
+      <Art name="bush" class="plan-bush sway" />
+      <Art name="monstera" class="plan-monstera sway" />
+      <header class="plan-head">
+        <h2 class="plan-title" id="t-plan">Todo planeado,<br />minuto a minuto</h2>
+        <p class="plan-note">Ceremonia y recepción a la hora exacta; el resto, horarios aproximados.</p>
+      </header>
+      <ol class="timeline" data-timeline>
+        <span class="tl-track" aria-hidden="true"><span class="tl-fill" data-tl-fill></span></span>
+        {itinerary.map((it, i) => (
+          <li class="tl-item" data-tl-item data-at={it.at}>
+            <time class="tl-time">{it.at}{!it.confirmed && <small>aprox.</small>}</time>
+            <span class="tl-node" aria-hidden="true"></span>
+            <div class="tl-body">
+              <h3>{it.title}</h3>
+              <p>{it.note}</p>
+              <span class="tl-state" data-tl-state></span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- 5 · La pista -->
+    <section class="dance" id="pista" aria-labelledby="t-pista">
+      <h2 class="caps title" id="t-pista">La pista</h2>
+      <div class="sides">
+        <div class="side side-a">
+          <p class="side-line"><span class="side-who">Rosario pone la</span> <span class="side-genre">cumbia</span></p>
+        </div>
+        <div class="side-vs" aria-hidden="true">&</div>
+        <div class="side side-b">
+          <p class="side-line"><span class="side-who">Joshua pone</span> <span class="side-genre">trap, reguetón, electrónica… de todo</span></p>
+        </div>
+      </div>
+      <p class="dance-q">¿Y tú, de qué lado bailas?</p>
+      <div class="team" role="group" aria-label="Elige tu team">
+        <button type="button" class="team-btn" data-team="cumbia" aria-pressed="false">Team Cumbia</button>
+        <button type="button" class="team-btn" data-team="perreo" aria-pressed="false">Team Perreo</button>
+      </div>
+      <p class="dance-note"><Icon name="note" />Pídenos tu canción cuando confirmes tu asistencia.</p>
+      <div class="dance-flora" aria-hidden="true">
+        <Art name="paradise" class="df df-a sway" />
+        <Art name="hibiscus" class="df df-b sway" />
+        <Art name="bush" class="df df-c sway" />
+        <Art name="plumeria" class="df df-d sway" />
+      </div>
+    </section>
+
+    <!-- 6 · Detalles -->
+    <section class="sheet details" id="detalles" aria-labelledby="t-detalles">
+      <h2 class="caps title" id="t-detalles">Detalles de nuestra celebración</h2>
+      <div class="detail">
+        <Icon name="hanger" class="d-icon" />
+        <h3 class="caps">Código de vestimenta</h3>
+        <p class="script-accent">{details.dressCode}</p>
+        <p>{details.dressNote}</p>
+        <div class="avoid" aria-label="Colores a evitar: blanco y beige">
+          <span class="chip chip-white">Blanco</span>
+          <span class="chip chip-beige">Beige</span>
+        </div>
+      </div>
+      <div class="detail">
+        <Icon name="people" class="d-icon" />
+        <h3 class="caps">Lugares especialmente reservados</h3>
+        <p data-seats-text>Esta invitación ha sido preparada especialmente para el número de personas indicado en tu invitación.</p>
+      </div>
+      <div class="detail">
+        <Icon name="glasses-off" class="d-icon" />
+        <h3 class="caps">Una celebración para compartir</h3>
+        <p class="pill-adults">Solo para adultos</p>
+        <p>{details.adultsOnly}</p>
+      </div>
+    </section>
+
+    <!-- 7 · Regalo -->
+    <section class="gift" id="regalo" aria-labelledby="t-regalo">
+      <Art name="peek" class="peek" />
+      <div class="gift-card">
+        <Icon name="gift" class="d-icon" />
+        <h2 class="caps title" id="t-regalo">Con cariño, un detalle</h2>
+        <p>{gift.note}</p>
+        <div class="bank">
+          <p class="bank-name caps">{gift.bank}</p>
+          <div class="acct">
+            <span class="acct-label">Cuenta</span>
+            <span class="acct-num">{gift.account}</span>
+            <button type="button" class="copy" data-copy={gift.account} aria-label="Copiar número de cuenta"><Icon name="copy" /><span>Copiar</span></button>
+          </div>
+          <div class="acct">
+            <span class="acct-label">CCI</span>
+            <span class="acct-num">{gift.cci}</span>
+            <button type="button" class="copy" data-copy={gift.cci} aria-label="Copiar CCI"><Icon name="copy" /><span>Copiar</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · RSVP -->
+    <section class="reply" id="confirmar" aria-labelledby="t-rsvp">
+      <Art name="monstera" class="reply-monstera sway" />
+      <Art name="paradise" class="reply-hib sway" />
+      <form class="reply-card" data-rsvp novalidate>
+        <div class="stamp-slot" aria-hidden="true">
+          <div class="stamp"><Art name="hibiscus" grain={false} /><span>Tacna · 2027</span></div>
+        </div>
+        <h2 class="caps title" id="t-rsvp">Confirma tu asistencia</h2>
+        <p class="reply-lede">Tarjeta de respuesta{rsvp.deadline && <> · antes del <strong>{rsvp.deadline}</strong></>}</p>
+
+        <div class="field">
+          <label for="f-name">Tu nombre o el de tu familia</label>
+          <input id="f-name" name="nombre" type="text" autocomplete="name" required maxlength="80" />
+          <p class="err" data-err="nombre" hidden>Escribe tu nombre para saber quién confirma.</p>
+        </div>
+
+        <fieldset class="field">
+          <legend>¿Nos acompañas?</legend>
+          <div class="choice">
+            <label><input type="radio" name="asiste" value="si" required /><span>¡Sí, ahí estaré!</span></label>
+            <label><input type="radio" name="asiste" value="no" /><span>No podré ir</span></label>
+          </div>
+          <p class="err" data-err="asiste" hidden>Elige una opción.</p>
+        </fieldset>
+
+        <div class="field" data-when-yes>
+          <label for="f-count">¿Cuántas personas asistirán? <span class="hint-max" data-max-label></span></label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="Una persona menos"><Icon name="minus" /></button>
+            <input id="f-count" name="cantidad" type="number" inputmode="numeric" min="1" max="10" value="1" />
+            <button type="button" data-step="1" aria-label="Una persona más"><Icon name="plus" /></button>
+          </div>
+        </div>
+
+        <div class="field" data-when-yes>
+          <label for="f-food">Restricciones alimentarias <span class="opt">(opcional)</span></label>
+          <input id="f-food" name="alimentacion" type="text" maxlength="120" placeholder="Vegetariano, alergias…" />
+        </div>
+
+        <div class="field" data-when-yes>
+          <label for="f-song">La canción que no puede faltar <span class="opt">(opcional)</span></label>
+          <input id="f-song" name="cancion" type="text" maxlength="120" placeholder="Artista – canción" />
+        </div>
+
+        <div class="field">
+          <label for="f-msg">Un mensaje para los novios <span class="opt">(opcional)</span></label>
+          <textarea id="f-msg" name="mensaje" rows="3" maxlength="500"></textarea>
+        </div>
+
+        <input type="hidden" name="team" value="" />
+        <button class="btn btn-send" type="submit" data-submit><span>Enviar respuesta</span></button>
+        <p class="form-msg" data-form-msg role="status" aria-live="polite"></p>
+
+        <div class="postmark" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" />
+            <circle cx="100" cy="100" r="62" />
+            <path id="pm-arc" d="M40 100 A60 60 0 0 1 160 100" fill="none" stroke="none" />
+            <text><textPath href="#pm-arc" startOffset="50%" text-anchor="middle">RESPUESTA RECIBIDA</textPath></text>
+            <text x="100" y="112" text-anchor="middle" class="pm-date" data-pm-date></text>
+            <path d="M8 150 C40 140 60 160 92 150 S150 140 192 150" />
+            <path d="M8 166 C40 156 60 176 92 166 S150 156 192 166" />
+          </svg>
+        </div>
+
+        <div class="after" data-after hidden>
+          <p class="after-text" data-after-text></p>
+          <a class="btn btn-wa" data-wa target="_blank" rel="noopener" hidden><Icon name="chat" />Avisar también por WhatsApp</a>
+          <button type="button" class="link-quiet" data-edit>Cambiar mi respuesta</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="night">
+    <Art name="sparkle" class="star ns-a" />
+    <Art name="sparkle" class="star ns-b" />
+    <Art name="sparkle" class="star ns-c" />
+    <Art name="sparkle" class="star ns-d" />
+    <p class="night-mono" aria-hidden="true">R<span>&</span>J</p>
+    <p class="night-line">Nos vemos el 27 de febrero</p>
+    <p class="caps night-place">Tacna · 2027</p>
+    <Art name="pokeball" class="night-ball" />
+    <Art name="bush" class="night-bush" />
+  </footer>
+
+  <a class="float-cta" href="#confirmar" data-float hidden>Confirmar asistencia</a>
+
+  <script type="application/json" id="wedding-config" set:html={JSON.stringify(config)} />
+  <script>
+    import { init } from '../scripts/main';
+    init();
+  </script>
+</Base>

@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Links de invitados · R&J" description="Generador de links personalizados para la invitación." noindex>
+  <main class="links">
+    <h1 class="caps title">Links para invitados</h1>
+    <p class="links-lede">Escribe el nombre como quieres que aparezca en el sobre y cuántos lugares tiene reservados. El link queda listo para copiar o enviar por WhatsApp.</p>
+
+    <form class="links-form" data-gen>
+      <div class="field">
+        <label for="g-name">Nombre en el sobre</label>
+        <input id="g-name" type="text" required maxlength="60" placeholder="Familia Pérez Quispe" />
+      </div>
+      <div class="field">
+        <label for="g-seats">Pases</label>
+        <input id="g-seats" type="number" min="1" max="20" value="2" required />
+      </div>
+      <button class="btn btn-solid" type="submit">Crear link</button>
+    </form>
+
+    <ol class="links-list" data-list></ol>
+    <p class="links-empty" data-empty>Todavía no creaste links. Se guardan solo en este navegador.</p>
+    <button type="button" class="link-quiet" data-clear hidden>Borrar la lista</button>
+  </main>
+
+  <style>
+    .links { width: min(100% - 2rem, 40rem); margin: 0 auto; padding: 3rem 0 5rem; }
+    .links-lede { font-style: italic; color: var(--muted); text-align: center; margin-top: 0.6rem; }
+    .links-form { display: grid; grid-template-columns: 1fr 6rem; gap: 0 1rem; align-items: end; margin-top: 2rem; background: var(--ivory); padding: 0.4rem 1.4rem 1.4rem; border-radius: 1.2rem; box-shadow: 0 14px 30px -22px rgb(80 40 15 / 0.5); }
+    .links-form .btn { grid-column: 1 / -1; margin-top: 1.2rem; }
+    .links-list { display: grid; gap: 0.8rem; margin-top: 2rem; }
+    .links-list li { background: var(--ivory); border-radius: 1rem; padding: 1rem 1.2rem; display: grid; gap: 0.5rem; }
+    .links-list strong { font-family: var(--f-script); font-weight: 400; font-size: 1.9rem; color: var(--monstera-ink); line-height: 1.1; }
+    .links-list code { font-size: 0.85rem; word-break: break-all; color: var(--muted); }
+    .row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .row .btn { min-height: 2.75rem; padding: 0.5rem 1rem; font-size: 0.72rem; }
+    .links-empty { text-align: center; font-style: italic; color: var(--muted); margin-top: 1.5rem; }
+  </style>
+
+  <script>
+    type Item = { name: string; seats: number };
+    const KEY = 'rj-links';
+    const load = (): Item[] => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } };
+    const save = (l: Item[]) => { try { localStorage.setItem(KEY, JSON.stringify(l)); } catch { /* sin almacenamiento */ } };
+    const base = location.origin + '/';
+    const urlFor = (i: Item) => `${base}?para=${encodeURIComponent(i.name)}&pases=${i.seats}`;
+
+    const list = document.querySelector<HTMLOListElement>('[data-list]')!;
+    const empty = document.querySelector<HTMLElement>('[data-empty]')!;
+    const clear = document.querySelector<HTMLButtonElement>('[data-clear]')!;
+    let items = load();
+
+    function render() {
+      list.replaceChildren();
+      items.forEach((i) => {
+        const url = urlFor(i);
+        const li = document.createElement('li');
+        const name = document.createElement('strong');
+        name.textContent = `${i.name} · ${i.seats} ${i.seats === 1 ? 'pase' : 'pases'}`;
+        const code = document.createElement('code');
+        code.textContent = url;
+        const row = document.createElement('div');
+        row.className = 'row';
+        const copy = document.createElement('button');
+        copy.type = 'button';
+        copy.className = 'btn btn-ghost';
+        copy.textContent = 'Copiar link';
+        copy.addEventListener('click', async () => {
+          try { await navigator.clipboard.writeText(url); copy.textContent = '¡Copiado!'; } catch { copy.textContent = 'Copia el texto de arriba'; }
+          setTimeout(() => (copy.textContent = 'Copiar link'), 2000);
+        });
+        const wa = document.createElement('a');
+        wa.className = 'btn btn-solid';
+        wa.target = '_blank';
+        wa.rel = 'noopener';
+        wa.textContent = 'Enviar por WhatsApp';
+        wa.href = `https://wa.me/?text=${encodeURIComponent(`¡Hola! Con mucho cariño te enviamos nuestra invitación de boda 💛\n${url}`)}`;
+        row.append(copy, wa);
+        li.append(name, code, row);
+        list.append(li);
+      });
+      empty.hidden = items.length > 0;
+      clear.hidden = items.length === 0;
+    }
+
+    document.querySelector<HTMLFormElement>('[data-gen]')!.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('g-name') as HTMLInputElement).value.trim();
+      const seats = parseInt((document.getElementById('g-seats') as HTMLInputElement).value, 10);
+      if (!name || !(seats > 0)) return;
+      items = [{ name, seats }, ...items];
+      save(items);
+      render();
+      (document.getElementById('g-name') as HTMLInputElement).value = '';
+      (document.getElementById('g-name') as HTMLInputElement).focus();
+    });
+    clear.addEventListener('click', () => { items = []; save(items); render(); });
+    render();
+  </script>
+</Base>

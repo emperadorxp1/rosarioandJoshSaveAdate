@@ -1,0 +1,143 @@
+---
+/**
+ * Ilustraciones autorales en trazo plano con grano de crayón (filtro #crayon definido en Base.astro).
+ * Uso: <Art name="hibiscus" class="..." />
+ */
+interface Props {
+  name:
+    | 'hibiscus'
+    | 'monstera'
+    | 'paradise'
+    | 'plumeria'
+    | 'leaf'
+    | 'bush'
+    | 'sparkle'
+    | 'pokeball'
+    | 'peek';
+  class?: string;
+  grain?: boolean;
+}
+const { name, class: cls = '', grain = true } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 8);
+const f = grain ? 'url(#crayon)' : undefined;
+---
+
+{name === 'hibiscus' && (
+  <svg class={`art art-hibiscus ${cls}`} viewBox="0 0 120 120" aria-hidden="true">
+    <g filter={f}>
+      {[0, 72, 144, 216, 288].map((r) => (
+        <path
+          transform={`rotate(${r} 60 60)`}
+          d="M60 62 C34 54 22 24 46 10 C58 3 74 6 82 16 C94 32 84 52 60 62Z"
+          fill="#f0624d"
+        />
+      ))}
+      {[0, 72, 144, 216, 288].map((r) => (
+        <path transform={`rotate(${r} 60 60)`} d="M60 60 C58 44 58 30 62 18" stroke="#c9452c" stroke-width="2" fill="none" stroke-linecap="round" />
+      ))}
+      <circle cx="60" cy="60" r="13" fill="#b8352a" />
+      <path d="M60 60 C70 48 80 38 92 26" stroke="#f3c64a" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      <circle cx="92" cy="26" r="4" fill="#f3c64a" />
+      <circle cx="86" cy="30" r="2.6" fill="#f3c64a" />
+      <circle cx="95" cy="32" r="2.6" fill="#f3c64a" />
+    </g>
+  </svg>
+)}
+
+{name === 'monstera' && (
+  <svg class={`art art-monstera ${cls}`} viewBox="0 0 160 170" aria-hidden="true">
+    <defs>
+      <mask id={`m-${uid}`}>
+        <rect width="160" height="170" fill="#fff" />
+        <g stroke="#000" stroke-width="7" stroke-linecap="round">
+          <path d="M6 58 L52 70" /><path d="M10 92 L56 92" /><path d="M28 126 L64 110" />
+          <path d="M154 58 L108 70" /><path d="M150 92 L104 92" /><path d="M132 126 L96 110" />
+        </g>
+        <g fill="#000">
+          <ellipse cx="58" cy="44" rx="5" ry="9" transform="rotate(-25 58 44)" />
+          <ellipse cx="102" cy="44" rx="5" ry="9" transform="rotate(25 102 44)" />
+          <ellipse cx="66" cy="132" rx="4" ry="7" />
+          <ellipse cx="94" cy="132" rx="4" ry="7" />
+        </g>
+      </mask>
+    </defs>
+    <g filter={f}>
+      <path mask={`url(#m-${uid})`} d="M80 158 C30 150 4 112 8 70 C12 30 48 8 80 14 C112 8 148 30 152 70 C156 112 130 150 80 158Z" fill="#2f7a45" />
+      <path d="M80 18 C78 70 80 120 80 168" stroke="#1f5a34" stroke-width="3.5" fill="none" stroke-linecap="round" />
+    </g>
+  </svg>
+)}
+
+{name === 'paradise' && (
+  <svg class={`art art-paradise ${cls}`} viewBox="0 0 160 140" aria-hidden="true">
+    <g filter={f}>
+      <path d="M8 120 C40 104 86 92 140 96 C110 106 70 116 8 120Z" fill="#2f7a45" />
+      <path d="M8 120 C44 100 92 86 150 88 L140 96 C88 94 46 104 8 120Z" fill="#5b3f8c" />
+      <path d="M70 96 C64 70 70 40 86 10 C88 44 84 72 80 94Z" fill="#f08a24" />
+      <path d="M84 94 C88 64 104 38 130 18 C118 50 104 74 92 96Z" fill="#f6a43a" />
+      <path d="M94 96 C108 76 128 64 154 58 C136 76 118 90 102 98Z" fill="#e8742a" />
+      <path d="M78 96 C90 80 104 68 122 62 C110 76 98 88 86 98Z" fill="#3e4fa8" />
+      <path d="M8 120 L2 136" stroke="#1f5a34" stroke-width="5" stroke-linecap="round" />
+    </g>
+  </svg>
+)}
+
+{name === 'plumeria' && (
+  <svg class={`art art-plumeria ${cls}`} viewBox="0 0 100 100" aria-hidden="true">
+    <g filter={f}>
+      {[0, 72, 144, 216, 288].map((r) => (
+        <path transform={`rotate(${r} 50 50)`} d="M50 50 C36 44 34 18 50 8 C64 16 62 40 50 50Z" fill="#fbf1d6" />
+      ))}
+      <circle cx="50" cy="50" r="12" fill="#f6c64a" />
+    </g>
+  </svg>
+)}
+
+{name === 'leaf' && (
+  <svg class={`art art-leaf ${cls}`} viewBox="0 0 80 160" aria-hidden="true">
+    <g filter={f}>
+      <path d="M40 156 C12 120 6 60 40 6 C74 60 68 120 40 156Z" fill="#3d8a4f" />
+      <path d="M40 150 L40 16" stroke="#24603a" stroke-width="3" stroke-linecap="round" />
+      <path d="M40 50 L26 38 M40 80 L22 66 M40 110 L24 98 M40 50 L54 38 M40 80 L58 66 M40 110 L56 98" stroke="#24603a" stroke-width="2.4" stroke-linecap="round" />
+    </g>
+  </svg>
+)}
+
+{name === 'bush' && (
+  <svg class={`art art-bush ${cls}`} viewBox="0 0 140 130" aria-hidden="true">
+    <g filter={f}>
+      <path d="M20 120 C2 118 0 90 18 82 C6 62 22 40 44 46 C46 22 74 14 88 30 C108 22 128 40 120 60 C140 70 136 100 118 110 C116 124 90 128 80 120 Z" fill="#3d8a4f" />
+      <path d="M48 80 L54 96 M60 76 L60 96 M72 80 L66 96 M92 54 L96 70 M102 52 L100 70" stroke="#24603a" stroke-width="3.4" stroke-linecap="round" />
+    </g>
+  </svg>
+)}
+
+{name === 'sparkle' && (
+  <svg class={`art art-sparkle ${cls}`} viewBox="-1 -1 2 2" aria-hidden="true">
+    <g filter={grain ? 'url(#crayon-sm)' : undefined}>
+      <path d="M0 -1 C.12 -.14 .14 -.12 1 0 C.14 .12 .12 .14 0 1 C-.12 .14 -.14 .12 -1 0 C-.14 -.12 -.12 -.14 0 -1Z" fill="currentColor" />
+    </g>
+  </svg>
+)}
+
+{name === 'pokeball' && (
+  <svg class={`art art-pokeball ${cls}`} viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.6" />
+    <path d="M3 20 H14 M26 20 H37" stroke="currentColor" stroke-width="1.6" />
+    <circle cx="20" cy="20" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+    <circle cx="20" cy="20" r="2" fill="currentColor" />
+  </svg>
+)}
+
+{name === 'peek' && (
+  <svg class={`art art-peek ${cls}`} viewBox="0 0 120 70" aria-hidden="true">
+    <g filter={f}>
+      <path d="M22 70 C22 40 40 26 60 26 C80 26 98 40 98 70Z" fill="#f6c431" />
+      <path d="M34 40 C24 26 16 10 12 0 C26 6 40 18 46 32Z" fill="#f6c431" />
+      <path d="M12 0 C16 6 19 11 22 15 C17 12 14 10 9 8 Z" fill="#2a2420" />
+      <path d="M86 40 C96 26 104 10 108 0 C94 6 80 18 74 32Z" fill="#f6c431" />
+      <path d="M108 0 C104 6 101 11 98 15 C103 12 106 10 111 8 Z" fill="#2a2420" />
+      <path d="M46 56 C48 52 52 52 54 56 M66 56 C68 52 72 52 74 56" stroke="#2a2420" stroke-width="3" fill="none" stroke-linecap="round" />
+    </g>
+  </svg>
+)}
