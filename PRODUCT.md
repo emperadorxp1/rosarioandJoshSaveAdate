@@ -36,12 +36,13 @@ Confirmed facts (from the printed invitation):
 - Parents of Rosario: Gregorio García Espinoza, María Martínez Gonzales. Parents of Joshua: Jesús Antonio Sosa Cruz, Ysabel Adolberta Cruz Cerrato.
 - Opening line: "Con la bendición de Dios y el amor de nuestras familias… tenemos el honor de invitarte a celebrar nuestra boda".
 - Date: 27 de febrero de 2027. Ceremony: Catedral de Tacna, 11:00 a.m. Reception: Local de Eventos Piedra Blanca, 12:30 p.m.
+- Afternoon (from the couple): civil ceremony at Piedra Blanca 1:30 p.m. (exact); couple's entrance and toast 2:15, lunch 2:50, party starts 3:30, hora loca 5:00 (approx.).
 - Dress code: Elegante; avoid white and beige (reserved for the couple).
 - Adults only ("Una noche para compartir").
 - Gift: Interbank, cuenta 3403111071786, CCI 00334001311107178678.
 
 Undecided / assumptions:
-- Itinerary beyond the two confirmed times is a **proposal written by the designer**, to be adjusted by the couple.
+- Itinerary: only 10:30 (arrival at the Cathedral) and 12:00 (photos and exit) remain a **proposal written by the designer**.
 - WhatsApp number to receive confirmations: pending.
 - RSVP deadline: pending.
 - Background music: none until the couple supply audio they have rights to; never autoplay.
@@ -50,7 +51,8 @@ Undecided / assumptions:
 ## Brand Commitments
 
 - Respect the palette and theme of the printed invitation and envelope (ivory cream, hibiscus coral, deep monstera green, gold linework, bird-of-paradise orange/purple accents). Pinned by the couple.
-- Pokémon present but subtle, as in the print (Poké Ball motif at the arch, a Pikachu hint peeking in a corner). No full character drawings.
+- Pokémon present but subtle, as in the print (Poké Ball motif at the arch, a Pikachu hint peeking in a corner). The one full character drawing is the Pikachu bride & groom illustration the couple chose (`public/img/pikachus.png`, third-party fan art they supplied), shown as the second polaroid that slides out of the envelope.
+- The gold wax seal carries a heart and two turtles facing each other: they represent the couple's daughters (reference `.impeccable/reference/lacre-tortugas.png`).
 - The couple love a grainy crayon illustration style (flat shapes, chalky grain, drawn sparkle stars) — used as the illustration hand.
 - Spanish (Peru), warm and familiar voice; "tú" to the guest.
 

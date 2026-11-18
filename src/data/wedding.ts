@@ -42,20 +42,19 @@ export const venues = [
 ];
 
 /**
- * PROPUESTA de itinerario (las horas sin confirmed se muestran como "aprox."): solo 11:00 (ceremonia) y 12:30 (recepción) están confirmados.
- * Ajusten horas y momentos a su gusto. `at` es la hora de inicio en formato 24 h (hora de Perú).
+ * Itinerario (las horas sin confirmed se muestran como "aprox."). Exactas: 11:00 (ceremonia religiosa), 12:30 (recepción) y 13:30 (ceremonia civil).
+ * La tarde la definieron los novios; 10:30 y 12:00 siguen siendo propuesta. `at` es la hora de inicio en formato 24 h (hora de Perú).
  */
 export const itinerary: { at: string; title: string; note: string; confirmed?: boolean }[] = [
   { at: '10:30', title: 'Llegada a la Catedral', note: 'Ubícate con calma; empezamos puntuales.' },
   { at: '11:00', confirmed: true, title: 'Ceremonia religiosa', note: 'Catedral de Tacna.' },
   { at: '12:00', title: 'Fotos y salida de los novios', note: 'Lluvia de pétalos en la puerta.' },
   { at: '12:30', confirmed: true, title: 'Recepción y cóctel de bienvenida', note: 'Local de Eventos Piedra Blanca.' },
-  { at: '13:30', title: 'Entrada de los novios y brindis', note: 'Levanta tu copa con nosotros.' },
-  { at: '14:00', title: 'Almuerzo', note: 'Sirvan con cariño, coman con ganas.' },
-  { at: '15:30', title: 'Primer baile', note: 'Los novios abren la pista.' },
-  { at: '16:00', title: 'Que empiece la fiesta', note: 'Cumbia, reguetón, trap y electrónica.' },
-  { at: '19:00', title: 'Hora loca', note: 'Guarda energía para este momento.' },
-  { at: '21:00', title: 'Despedida', note: 'Gracias por celebrar con nosotros.' },
+  { at: '13:30', confirmed: true, title: 'Ceremonia civil', note: 'En Piedra Blanca, frente a todos ustedes.' },
+  { at: '14:15', title: 'Entrada de los novios y brindis', note: 'Levanta tu copa con nosotros.' },
+  { at: '14:50', title: 'Almuerzo', note: 'Sirvan con cariño, coman con ganas.' },
+  { at: '15:30', title: 'Que empiece la fiesta', note: 'Cumbia, reguetón, trap y electrónica.' },
+  { at: '17:00', title: 'Hora loca', note: 'Guarda energía para este momento.' },
 ];
 
 export const details = {
