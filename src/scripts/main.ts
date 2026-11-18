@@ -20,12 +20,13 @@ const store = {
 };
 
 /* ---------- Invitado desde el link: ?para=Familia%20Pérez&pases=3 ---------- */
-type Guest = { name: string; seats: number | null };
+type Guest = { name: string; seats: number | null; id: string };
 function readGuest(): Guest {
   const q = new URLSearchParams(location.search);
   const raw = (q.get('para') || q.get('invitado') || '').replace(/[<>]/g, '').trim().slice(0, 60);
   const n = parseInt(q.get('pases') || '', 10);
-  return { name: raw, seats: Number.isFinite(n) && n > 0 && n <= 20 ? n : null };
+  const id = (q.get('id') || '').trim().toUpperCase();
+  return { name: raw, seats: Number.isFinite(n) && n > 0 && n <= 20 ? n : null, id: /^[A-Z0-9]{4,8}$/.test(id) ? id : '' };
 }
 
 function applyGuest(g: Guest) {
@@ -367,6 +368,7 @@ function setupRsvp(cfg: Config, guest: Guest) {
     if (data.asiste === 'no') { data.cantidad = '0'; data.alimentacion = ''; data.cancion = ''; }
     data.pases = guest.seats ? String(guest.seats) : '';
     data.invitado = guest.name;
+    data.codigo = guest.id;
 
     if (!cfg.rsvp.endpoint) {
       if (cfg.rsvp.whatsapp) { finish(data, false); return; }
