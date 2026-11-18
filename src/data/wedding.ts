@@ -72,7 +72,7 @@ export const gift = {
 
 export const rsvp = {
   /** URL de la Web App de Google Apps Script (ver apps-script/README.md). Vacío = aún no configurado. */
-  endpoint: '',
+  endpoint: 'https://script.google.com/macros/s/AKfycbz2XTEsUiGwgn4VSv-Hzv_vUbgD455nTqGCACdqdWf8pFlJ98NShSLgrBjc-jehag8z/exec',
   /** Número de WhatsApp de los novios con código de país, solo dígitos. Ej: '51987654321'. Vacío = se oculta el botón. */
   whatsapp: '',
   /** Fecha límite para confirmar (texto libre). Vacío = no se muestra. */
